@@ -1,0 +1,42 @@
+<div class="container-fluid background-page row">
+    <div class="container">
+        <h1 class="title">Listar Clientes</h1>
+        <form #formFiltrar="ngForm" class="mt-4 mb-4">
+            <div class="form-group">
+                <label for="cpf">Filtrar:</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" (keyup)="filtrar($event)">
+            </div>
+            <button type="button" class="btn btn-primary btn-block mt-3" [disabled]="!formFiltrar.form.valid">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                Buscar
+            </button>
+        </form>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>CPF</th>
+                    <th>Nome</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>Saldo da conta</th>
+                    <th class="text-center">Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes" class="position-relative">
+                    <td> {{cliente.cpf! | mask:"000.000.000-00"}}</td>
+                    <td> {{cliente.nome}} </td>
+                    <td> {{cliente.endereco?.cidade}} </td>
+                    <td> {{cliente.endereco?.estado}} </td>
+                    <td> {{cliente.conta?.saldoConta | currency}} </td>
+                    <td class="text-center" style="width: 15%">
+                        <a [routerLink]="['/visualizar-cliente', cliente.id]" href="#" title="Visualizar"
+                            alt="Visualizar" class="btn btn-xs btn-info button-list">
+                            <i class="fa fa-file-text icon-color" aria-hidden="true"></i> Visualizar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="clientes === undefined" class="fs-3 text-center text-secondary fw-bolder">Nenhum cliente encontrado.</p>
+    </div>
+</div>

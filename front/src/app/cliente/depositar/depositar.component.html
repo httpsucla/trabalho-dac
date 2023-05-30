@@ -1,0 +1,19 @@
+<div class="modal-header bg-success">   
+    <h4 class="modal-title text-white" id="modalLabel"> Depositar </h4>
+    <a class="close" aria-label="Fechar"(click)="activeModal.dismiss()">
+        <span class="fa fa-xmark icon-color text-white" aria-hidden="true"></span>
+    </a>
+</div>
+<div class="modal-body row">
+    <form #formDepositar="ngForm" class="mt-4 mb-4">
+        <div class="form-group">
+            <label for="valor">Valor:</label>
+            <input type="text" class="form-control" id="valor" name="valor" [(ngModel)]="inputValor" #valor="ngModel" prefix="R$ " mask="separator.2" thousandSeparator="." required>
+              
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark w-100" (click)="deposito()" [disabled]="!formDepositar.form.valid">Depositar</button>
+        </div>
+    </form>
+</div>
+

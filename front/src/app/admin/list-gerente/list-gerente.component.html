@@ -1,0 +1,37 @@
+<div class="container-fluid background-page row">
+    <div class="container">
+        <h1 class="title">Gerentes</h1>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th class="text-center">
+                        <a [routerLink]="['/criar-gerente']" href="#" title="Novo" alt="Novo"
+                            class="btn btn-xs btn-success button-list">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Novo</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gerente of gerentes" class="position-relative">
+                    <td> {{gerente.nome}} </td>
+                    <td> {{gerente.email}} </td>
+                    <td> {{gerente.cpf! | mask:'000.000.000-00'}} </td>
+                    <td class="text-center" style="width: 10%">
+                        <a class="button-list" (click)="abrirModal(gerente)">
+                            <i class="fa fa-eye icon-color" aria-hidden="true"></i>
+                        </a>
+                        <a [routerLink]="['/editar-gerente', gerente.id]" href="#" title="Editar" alt="Editar"
+                            class="button-list">
+                            <i class="fa fa-edit icon-color" aria-hidden="true"></i></a>
+                        <a (click)="delete($event, gerente)" href="#" title="Remover" alt="Remover" class="button-list">
+                            <i class="fa fa-trash-can icon-color" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="gerentes.length==0" class="fs-3 text-center text-secondary fw-bolder">Nenhum gerente cadastrado.</p>
+    </div>
+</div>

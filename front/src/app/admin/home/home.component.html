@@ -1,0 +1,15 @@
+<div class="container-fluid background-page row">
+    <div class="container">
+        <h1 class="title">Dashboard</h1>
+        <div class="row d-flex mx-auto w-100">
+                <div *ngFor="let gerente of gerentes" class="shadow bg-white p-3 m-5 bg-body-tertiary rounded w-25">
+                    <h2 class="text-dark mb-4 mt-2 ms-2"> {{gerente.nome}}</h2>
+                    <p class="ms-4">Quantidade de Clientes: <span class="fw-bold">{{getGerenteLength(gerente)}}</span> </p>
+                    <p class="ms-4">Somatoria saldos positivos: <span class="fw-bold">{{getSaldoPositivo(gerente) | currency}}</span></p>
+                    <p class="ms-4">Somatoria saldos negativos: <span class="fw-bold">{{getSaldoNegativo(gerente) | currency}}</span></p>
+                </div>
+           
+        </div>
+        <p *ngIf="gerentes.length==0" class="fs-3 mt-5 text-center text-secondary fw-bolder">Nenhum gerente cadastrado.</p>
+    </div>
+</div>

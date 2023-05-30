@@ -1,0 +1,29 @@
+<div class="container-fluid background-page row">
+    <div class="container">
+        <h1 *ngIf="usuarioLogado" class="title">Olá, {{usuarioLogado.nome}}</h1>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>CPF</th>
+                    <th>Nome</th>
+                    <th>Salário</th>
+                    <th class="text-center">Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes" class="position-relative">
+                    <td> {{cliente.cpf! | mask:"000.000.000-00"}}</td>
+                    <td> {{cliente.nome}} </td>
+                    <td> {{cliente.salario | currency}} </td>
+                    <td class="text-center" style="width: 20%">
+                        <button (click)="aprovarCliente(cliente)" href="#" title="Aprovar" alt="Aprovar"
+                            class="btn btn-xs btn-success button-list">Aprovar</button>
+                        <button (click)="abrirModal(cliente)" href="#" title="Recusar" alt="Recusar"
+                            class="btn btn-xs btn-danger button-list">Recusar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="clientes === undefined" class="fs-3 text-center text-secondary fw-bolder">Nenhum cliente pendente.</p>
+    </div>
+</div>

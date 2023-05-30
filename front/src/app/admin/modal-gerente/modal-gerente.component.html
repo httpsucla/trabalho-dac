@@ -1,0 +1,21 @@
+<div class="modal-header">   
+    <h4 class="modal-title" id="modalLabel"> Gerente </h4>
+    <a class="close" aria-label="Fechar"(click)="activeModal.dismiss()">
+        <span class="fa fa-xmark icon-color" aria-hidden="true"></span>
+    </a>
+</div>
+<div class="modal-body row">
+    <div class="col-md-3">
+        <p class="fw-bold">Nome</p>
+        <p class="fw-bold">Email</p>
+        <p class="fw-bold">CPF</p>
+    </div>
+    <div class="col-md">
+        <p>{{ gerente.nome}}</p>
+        <p>{{ gerente.email}}</p>
+        <p>{{ gerente.cpf! | mask: '000.000.000-00'}}</p>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Fechar</button>
+</div>

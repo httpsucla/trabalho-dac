@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div *ngIf="message" class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{message}}
+            <a href="#" class="close fa fa-xmark icon-color text-decoration-none float-end" data-dismiss="alert"
+                aria-label="close"></a>
+        </div>
+        <div class="col-sm-6 col-md-4 col-md-offset-4 ">
+            <h1 class="text-center login-title m-5">Faça Login para continuar</h1>
+            <div class="account-wall">
+                <img class="profile-img" src="../../assets/img/icon-user.png" alt="">
+                <form #formLogin="ngForm" class="form-signin" (keydown.enter)="logar()">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email" id="email" name="email"
+                            [(ngModel)]="login.login" #email="ngModel" required>
+                        <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+                            <div [hidden]="email?.errors?.['required']">Email obrigatório.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Senha" id="senha" name="name"
+                            [(ngModel)]="login.senha" #senha="ngModel" required>
+                        <div *ngIf="senha.errors && (senha.dirty|| senha.touched)" class="alert alert-danger">
+                            <div [hidden]="senha?.errors?.['required']"> Senha obrigatória.</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-lg btn-primary w-100" type="button" (click)="logar()"
+                        [disabled]="!formLogin.form.valid">Logar</button>
+                    <button [routerLink]="['/create']" class="btn btn-lg btn-success w-100" type="button" style="margin-top: 10px;">
+                        <a href="#" class="text-center new-account" href="#">Criar conta</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Tipo</th>
+                <!--       <th>Conta</th> -->
+                <th>
+                    <a (click)="resete($event)" href="#" title="Resetar" alt="Resetar" class="button-list">
+                        <i class="fa fa-refresh" aria-hidden="true"></i></a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users" class="position-relative">
+                <td> {{user.id}}</td>
+                <td> {{user.nome}} </td>
+                <td> {{user.email}} </td>
+                <td> {{user.senha}} </td>
+                <td> {{user.perfil}} </td>
+                <!--  <td *ngIf="cliente"> {{cliente?.conta?.conta}}</td> -->
+                <td>
+                    <a (click)="delete($event, user)" href="#" title="Remover" alt="Remover" class="button-list">
+                        <i class="fa fa-trash-can icon-color" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+            <!--       <tr *ngFor="let clientes of cliente" class="position-relative">
+                <td> {{clientes.id}}</td>
+                <td> {{clientes.salario}} </td>
+                <td> {{clientes.conta?.conta}} </td>
+    
+            </tr> -->
+        </tbody>
+    </table>
+
+</div>

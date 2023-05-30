@@ -1,0 +1,21 @@
+<div class="modal-header bg-warning">   
+    <h4 class="modal-title text-white" id="modalLabel"> Tranferência </h4>
+    <a class="close" aria-label="Fechar"(click)="activeModal.dismiss()">
+        <span class="fa fa-xmark icon-color text-white" aria-hidden="true"></span>
+    </a>
+</div>
+<div class="modal-body row">
+    <form #formTransferencia="ngForm" class="mt-4 mb-4">
+        <div class="form-group">
+            <label for="contaDest">Conta Destino:</label>
+            <input type="number" class="form-control" id="contaDest" name="contaDest" [(ngModel)]="contaDest" required>
+      
+            <label for="valor">Valor:</label>
+            <input type="text" class="form-control" id="valor" name="valor" [(ngModel)]="inputValor" #valor="ngModel" prefix="R$ " mask="separator.2" thousandSeparator="." required> 
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark w-100" (click)="transferencia()" [disabled]="!formTransferencia.form.valid">Transferir</button>
+        </div>
+    </form>
+</div>
+

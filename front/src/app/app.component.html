@@ -1,0 +1,54 @@
+<!-- LOGADO -->
+<div *ngIf="usuarioLogado" class="conteiner-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark menu-color">
+        <a *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="navbar-brand nav-link" href="#"
+            [routerLink]="['/cliente']">
+            <i class="fa fa-building-columns" style="color: white;"></i> {{ title }} </a>
+        <a *ngIf="usuarioLogado.perfil === 'ADMIN'" class="navbar-brand nav-link" href="#" [routerLink]="['/admin']">
+            <i class="fa fa-building-columns" style="color: white;"></i> {{ title }} </a>
+        <a *ngIf="usuarioLogado.perfil === 'GERENTE'" class="navbar-brand nav-link" href="#"
+            [routerLink]="['/gerente']">
+            <i class="fa fa-building-columns" style="color: white;"></i> {{ title }} </a>
+        <div class="navbar-collapse collapsed justify-content-between" id="navbarContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- CLIENTE -->
+                <li *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['/extrato']">Extrato</a>
+                </li>
+                <li *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['/perfil', cliente.id]">Perfil</a>
+                </li>
+
+                <!-- GERENTE -->
+                <li *ngIf="usuarioLogado.perfil === 'GERENTE'" class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['/listar-cliente']">Lista clientes</a>
+                </li>
+                <li *ngIf="usuarioLogado.perfil === 'GERENTE'" class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['/buscar-cliente']">Buscar cliente</a>
+                </li>
+                <li *ngIf="usuarioLogado.perfil === 'GERENTE'" class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['/top5-clientes']">3 Melhores clientes</a>
+                </li>
+
+                <!-- ADMINISTRADOR -->
+                <li *ngIf="usuarioLogado.perfil === 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['/listar-gerente']">Gerentes</a>
+                </li>
+                <li *ngIf="usuarioLogado.perfil === 'ADMIN'" class="nav-item">
+                    <a class="nav-link" href="#" [routerLink]="['/relatorio-cliente']">Relatório de clientes</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto justify-content-end">
+                <!-- CLIENTE -->
+                <li *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="nav-item">
+                    <a class="nav-link">Saldo: {{cliente.conta?.saldoConta | currency}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="logout()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="nav-shadow"></div>
+</div>
+<router-outlet></router-outlet>

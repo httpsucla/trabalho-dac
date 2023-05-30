@@ -1,0 +1,26 @@
+<div class="container-fluid background-page row">
+    <div class="container">
+        <h1 class="title">Relatório de Clientes</h1>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Limite</th>
+                    <th>Gerente</th>
+                    <th>Saldo da conta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes" class="position-relative">
+                    <td> {{cliente.nome}} </td>
+                    <td> {{cliente.cpf! | mask: "000.000.000-00"}} </td>
+                    <td> {{cliente?.conta?.limite | currency}} </td>
+                    <td> {{getGerentedoCliente(cliente.id!)}} </td>
+                    <td> {{cliente.conta?.saldoConta | currency}} </td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="clientes == undefined" class="fs-3 text-center text-secondary fw-bolder">Nenhum cliente cadastrado.</p>
+    </div>
+</div>

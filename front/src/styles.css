@@ -1,0 +1,111 @@
+@media (min-width: 1920px) {
+    .background-page {
+        min-height: 1050px;
+    }
+}
+
+@media (max-width: 1680px) {
+    .background-page {
+        min-height: 900px
+    }
+}
+@media (max-width: 1366px) {
+    .background-page {
+        min-height: 650px;
+    }
+}
+
+.title {
+    font-family: 'Muli', sans-serif;
+    color: #292929f3;
+    margin: 1.2em auto 0;
+}
+
+.background-page {
+    background-color: #f7f7f7;
+    margin: 0 !important;
+    display: flex;
+}
+.button-list {
+    margin: auto 2%;
+}
+.button-list :hover {
+    color: #283370;
+}
+
+.icon-color {
+    color: #292929f3;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-header {
+    background: #f5f5f5;
+}
+
+.form-create {
+    background: #fff;
+    overflow: hidden;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    padding: 10px 75px 75px;
+    margin: 5% 30%;
+}
+
+.form-input {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    color: #555555;
+    line-height: 1.2;
+    padding-right: 15px;
+    border: transparent;
+    background: transparent;
+    outline-style: none;
+}
+
+.label-input {
+    font-size: 10px;
+    color: #393939;
+    line-height: 1.5;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.wrap-input {
+    width: 100%;
+    position: relative;
+    border: 1px solid #e6e6e6;
+    border-radius: 13px;
+    padding: 10px 30px 9px 22px;
+    margin-bottom: 20px;
+    background-color: #f7f7f7;
+}
+
+.cadastro-line {
+    height:2px;
+    width:100%;
+    border-width:0;
+    color:#000;
+    background-color:#000;
+}
+
+.busca {
+    padding: 0 50px 25px;
+}
+
+.cliente-box {
+    width: 20% !important;
+    height: 125px;
+    margin: 1em !important;
+}
+
+.icon {
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    position: absolute;
+    z-index: 0;
+    font-size: 90px;
+    color: rgba(0, 0, 0, 0.15);
+}

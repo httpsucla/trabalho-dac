@@ -1,0 +1,48 @@
+<div class="container-fluid background-page row">
+    <div class="container">
+        <h1 class="title">Extrato</h1>
+        <form #formExtrato="ngForm" class="mt-4 mb-4 row d-flex align-items-end">
+            <div class="form-group col-2">
+                <label for="dt-i">Data inicio:</label>
+                <input type="text" [(ngModel)]="dataInicio" class="form-control" id="dt-i" name="dt-i" mask="d0/M0/0000"
+                    [leadZeroDateTime]="true">
+            </div>
+            <div class="form-group col-2">
+                <label for="dt-f">Data fim:</label>
+                <input type="text" [(ngModel)]="dataFim" class="form-control" id="dt-f" name="dt-f" mask="d0/M0/0000"
+                    [leadZeroDateTime]="true">
+            </div>
+            <button (click)="busca()" type="button" class="btn btn-primary col-1 h-50"
+                [disabled]="!formExtrato.form.valid">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Buscar
+            </button>
+        </form>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Data/Hora</th>
+                    <th>Operação</th>
+                    <th>Origem/Destino</th>
+                    <th>Valor</th>
+                    <th>Saldo consolidado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let operacao of operacoes" class="position-relative" [ngStyle]="{
+                        'background-color': operacao.tipo === 'SAQUE' ? '#ff3333' :
+                        operacao.tipo === 'DEPOSITO' ? 'PaleTurquoise' : 
+                        operacao.contaOrigem === cliente.conta?.conta ? '#ff3333' :  'PaleTurquoise'
+                    }">
+                    <td> {{operacao.dataHoraMovimentacao! | date: 'medium'}} </td>
+                    <td> {{operacao.tipo ? operacao.tipo : '-'}} </td>
+                    <td> {{operacao.contaOrigem ? operacao.contaOrigem : '-'}} / {{operacao.contaDestino ?
+                        operacao.contaDestino : '-' }}</td>
+                    <td> {{operacao.valor! | currency}}</td>
+                    <td> {{operacao.saldoConsolidado | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p *ngIf="operacoes === undefined" class="fs-3 text-center text-secondary fw-bolder">Nenhuma movimentação
+            pendente.</p>
+    </div>
+</div>

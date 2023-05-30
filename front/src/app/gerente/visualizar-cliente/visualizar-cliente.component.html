@@ -1,0 +1,63 @@
+<div class="container-fluid background-page row">
+    <div class="container">
+        <h1 class="title fw-bold col">Detalhes</h1>
+        <div class="border bg-white busca mb-5 mt-5">
+        <a class="text-black fw-bold h5 text-decoration-none" style="margin-left:-35px" [routerLink]="['/listar-cliente']"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
+            <h4 class="title">Dados gerais</h4>
+            <hr class="cadastro-line">
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Nome:</p>
+                    <p>Email:</p>
+                    <p>CPF:</p>
+                    <p>Salário:</p>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <p class="fw-bold" id="nome">{{cliente.nome ? cliente.nome : '--' }}</p>
+                    <p class="fw-bold" id="email">{{cliente.email ? cliente.email : '--' }}</p>
+                    <p class="fw-bold" id="cpf">{{cliente.cpf! | mask:'000.000.000-00' }}</p>
+                    <p class="fw-bold" id="salario">{{cliente.salario! | currency }}</p>
+                </div>
+            </div>
+            <h4 class="title">Endereço</h4>
+            <hr class="cadastro-line">
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Rua:</p>
+                    <p>Número:</p>
+                    <p>Complemento:</p>
+                    <p>CEP:</p>
+                    <p>Bairro:</p>
+                    <p>Cidade:</p>
+                    <p>Estado:</p>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <p class="fw-bold" id="logradouro">{{cliente.endereco?.logradouro ? cliente.endereco?.logradouro : '--'}}</p>
+                    <p class="fw-bold" id="numero">{{cliente.endereco?.numero ? cliente.endereco?.numero : '--'}}</p>
+                    <p class="fw-bold" id="complemento">{{cliente.endereco?.complemento ? cliente.endereco?.complemento : '--' }} </p>
+                    <p class="fw-bold" id="cep">{{cliente.endereco?.cep! | mask:'00000-000'}}</p>
+                    <p class="fw-bold" id="bairro">{{cliente.endereco?.bairro ? cliente.endereco?.bairro : '--'}}</p>
+                    <p class="fw-bold" id="cidade">{{cliente.endereco?.cidade ? cliente.endereco?.cidade : '--'}}</p>
+                    <p class="fw-bold" id="estado">{{cliente.endereco?.estado ? cliente.endereco?.estado : '--'}}</p>
+                </div>
+            </div>
+            <h4 class="title">Conta</h4>
+            <hr class="cadastro-line">
+            <div class="row">
+                <div class="col-sm-2">
+                    <p>Conta:</p>
+                    <p>Criação:</p>
+                    <p>Limite:</p>
+                    <p>Saldo:</p>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <p class="fw-bold" id="conta">{{cliente.conta?.conta ? cliente.conta?.conta  : '--' }}</p>
+                    <p class="fw-bold" id="criacao">{{cliente.conta?.criacao! | date:'medium'}}</p>
+                    <p class="fw-bold" id="limite">{{cliente.conta?.limite! | currency }}</p>
+                    <p class="fw-bold" id="saldo">{{cliente.conta?.saldoConta! | currency }}</p>
+                </div>
+            </div>     
+            
+        </div>
+    </div>
+</div>

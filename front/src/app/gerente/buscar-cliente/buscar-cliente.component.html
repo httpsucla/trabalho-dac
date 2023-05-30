@@ -1,0 +1,49 @@
+<div class="container-fluid background-page row" >
+    <div class="container">
+    <h1 class="title">Buscar Cliente</h1>
+    <form #formBusca="ngForm" class="mt-4 mb-4">
+        <div class="form-group">
+            <label for="cpf">CPF:</label>
+            <input type="text" class="form-control" id="cpf" name="cpf" [(ngModel)]="cliente.cpf" #cpf="ngModel" minlength="11" mask="000.000.000-00" required>
+            <div *ngIf="cpf.errors && (cpf.dirty || cpf.touched)" class="alert alert-danger">
+                <div [hidden]="cpf?.errors?.['required']">Digite o CPF do cliente.</div>
+                <div [hidden]="cpf?.errors?.['minlength']">Digite um CPF válido.</div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-block mt-3" (click)="buscar()" [disabled]="!formBusca.form.valid">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            Buscar
+        </button>
+    </form>
+    <div class="border bg-white busca mb-4">
+        <h4 class="title">Resultado </h4>
+        <hr class="cadastro-line">
+        <div class="row" *ngIf="cliente.nome">
+            <div class="col-sm-2">
+                <p>Nome:</p>
+                <p>Email:</p>
+                <p>Salário:</p>
+                <p>Rua:</p>
+                <p>Numero: </p>
+                <p>Complemento:</p>
+                <p>CEP:</p>
+                <p>Bairro:</p>
+                <p>Cidade:</p>
+                <p>Estado:</p>
+            </div>
+            <div class="col-sm-2 text-center">
+                <p class="fw-bold" id="nome">{{cliente.nome ? cliente.nome : '--' }}</p>
+                <p class="fw-bold" id="email">{{cliente.email ? cliente.email : '--' }}</p>
+                <p class="fw-bold" id="salario">{{cliente.salario! | currency }}</p>
+                <p class="fw-bold" id="logradouro">{{cliente.endereco?.logradouro ? cliente.endereco?.logradouro : '--'}}</p>
+                <p class="fw-bold" id="numero">{{cliente.endereco?.numero ? cliente.endereco?.numero : '--'}}</p>
+                <p class="fw-bold" id="complemento">{{cliente.endereco?.complemento ? cliente.endereco?.complemento : '--' }} </p>
+                <p class="fw-bold" id="cep">{{cliente.endereco?.cep! | mask:'00000-000'}}</p>
+                <p class="fw-bold" id="bairro">{{cliente.endereco?.bairro ? cliente.endereco?.bairro : '--'}}</p>
+                <p class="fw-bold" id="cidade">{{cliente.endereco?.cidade ? cliente.endereco?.cidade : '--'}}</p>
+                <p class="fw-bold" id="estado">{{cliente.endereco?.estado ? cliente.endereco?.estado : '--'}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,17 @@
+<div class="modal-header">   
+    <h4 class="modal-title" id="modalLabel"> Motivo reprovação </h4>
+    <a class="close" aria-label="Fechar"(click)="activeModal.dismiss()">
+        <span class="fa fa-xmark icon-color" aria-hidden="true"></span>
+    </a>
+</div>
+<div class="modal-body row">
+    <form #formMotivo="ngForm" class="mt-4 mb-4">
+        <div class="form-group">
+            <label for="motivo">Motivo:</label>
+            <textarea type="text" class="form-control" id="motivo" name="motivo" style="resize: none;height: 150px;" required></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="activeModal.close()" [disabled]="!formMotivo.form.valid">Enviar</button>
+        </div>
+    </form>
+</div>
